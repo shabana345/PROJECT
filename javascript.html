@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Tools Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #e5efe7;
+            margin-top: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #00ff22;
+            color: #1a1a2e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #00b7d6;
+            transform: scale(1.05);
+        }
+
+        input, .task-item {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            background: #ff3366;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Color Changer -->
+        <div class="card">
+            <h2>Background Changer</h2>
+            <button onclick="changeBackground()">Change Color</button>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="card">
+            <h2>Countdown Timer</h2>
+            <div id="timer">10</div>
+            <button onclick="startTimer()">Start Timer</button>
+        </div>
+
+        <!-- Email Form -->
+        <div class="card">
+            <h2>Email Validator</h2>
+            <form id="emailForm" onsubmit="return validateEmail(event)">
+                <input type="email" id="emailInput" placeholder="Enter email" required>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="emailResult"></div>
+        </div>
+
+        <!-- To-Do List -->
+        <div class="card">
+            <h2>To-Do List</h2>
+            <input type="text" id="taskInput" placeholder="Add a task">
+            <button onclick="addTask()">Add Task</button>
+            <div id="taskList"></div>
+        </div>
+
+        <!-- Calculator -->
+        <div class="card">
+            <h2>Calculator</h2>
+            <input type="number" id="num1" placeholder="First number">
+            <input type="number" id="num2" placeholder="Second number">
+            <div>
+                <button onclick="calculate('+')">+</button>
+                <button onclick="calculate('-')">-</button>
+                <button onclick="calculate('*')">×</button>
+                <button onclick="calculate('/')">÷</button>
+            </div>
+            <div id="calcResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Background Color Changer
+        function changeBackground() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96c93d', '#f7d794'];
+            document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // 2. Countdown Timer
+        let timerInterval;
+        function startTimer() {
+            clearInterval(timerInterval);
+            let time = 10;
+            document.getElementById('timer').textContent = time;
+            timerInterval = setInterval(() => {
+                time--;
+                document.getElementById('timer').textContent = time;
+                if (time <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('timer').textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+        // 3. Email Validation
+        function validateEmail(event) {
+            event.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const resultDiv = document.getElementById('emailResult');
+            if (emailRegex.test(email)) {
+                resultDiv.textContent = 'Valid email!';
+                resultDiv.style.color = '#00ff00';
+            } else {
+                resultDiv.textContent = 'Invalid email format!';
+                resultDiv.style.color = '#ff3366';
+            }
+            return false;
+        }
+
+        // 4. To-Do List
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+            if (taskText) {
+                const taskList = document.getElementById('taskList');
+                const taskDiv = document.createElement('div');
+                taskDiv.className = 'task-item';
+                taskDiv.innerHTML = `
+                    ${taskText}
+                    <button class="delete-btn" onclick="this.parentElement.remove()">Delete</button>
+                `;
+                taskList.appendChild(taskDiv);
+                taskInput.value = '';
+            }
+        }
+
+        // 5. Calculator
+        function calculate(operator) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const resultDiv = document.getElementById('calcResult');
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                resultDiv.textContent = 'Please enter valid numbers!';
+                return;
+            }
+
+            switch(operator) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': 
+                    if (num2 === 0) {
+                        resultDiv.textContent = 'Cannot divide by zero!';
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+            }
+            resultDiv.textContent = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>

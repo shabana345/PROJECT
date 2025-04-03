@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Webpage</title>
+    <style>
+        
+        
+        /* General Styling */
+        body {
+            background-color: #f4f4f4;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Menu with Flexbox */
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #333333;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background: #575757;
+            border-radius: 5px;
+        }
+
+        /* 3-Column Layout with CSS Grid */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Button with Hover Effects */
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Simple Animation */
+        .animate {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: relative;
+            animation: move 2s infinite alternate;
+        }
+        @keyframes move {
+            0% { left: 0; }
+            100% { left: 100px; }
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <!-- Navigation Menu -->
+    <nav style="background-color:darkkhaki; font-style: italic;" >
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav> 
+    <div class="container"  style="text-align: center; background-color: blanchedalmond;">
+        
+        <h1>Welcome to My Styled Page</h1>
+         <p>This is a simple example of how to style a webpage using CSS.</p>
+          
+    </div>
+
+    <!-- 3-Column Layout -->
+    <div class="container">
+        <div class="box" style="background-color:chocolate;">Column 1</div>
+        <div class="box" style="background-color: darkorchid;">Column 2</div>
+        <div class="box" style="background-color: forestgreen;">Column 3</div>
+    </div>
+
+    <!-- Button with Hover Effect -->
+    <div style="text-align: center; margin: 20px;">
+        <button class="btn">Hover Me</button>
+    </div>
+
+    <!--Simple Animation -->
+    <div class="animate">
+        <img src="https://www.promoshin.com/wp-content/uploads/2024/02/cover-e-learning-animation.gif" width="300px">
+        <img src="https://framerusercontent.com/images/4F8IprBrbZX2xjuqqjLv95nAE.gif" width="300px">
+        <img src="https://cdn.dribbble.com/users/1681709/screenshots/4735856/gif.gif" width="300px">
+        <div class="card-body"></div>
+    </div>
+</body>
+</html>

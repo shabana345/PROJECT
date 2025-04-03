@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shabana Azmin M - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .section {
+            padding: 2rem;
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .skills-list {
+            display: none;
+        }
+        .skills-list.active {
+            display: block;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="header">
+            <h1>Shabana Azmin M</h1>
+            <h3>Business Development Executive</h3>
+        </div>
+
+        <!-- Contact -->
+        <div class="section">
+            <h2>Contact</h2>
+            <ul class="list-unstyled">
+                <li><strong>Phone:</strong> 8925625736</li>
+                <li><strong>Email:</strong> shabanaazmin442@gmail.com</li>
+                <li><strong>Location:</strong> Chengalpattu - 603209, Tamil Nadu</li>
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>Education</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Master of Business Administration</h5>
+                    <p>University of Madras<br>2024-2026</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Bachelor of Commerce in ISM</h5>
+                    <p>C.S.I Ewart Women's Christian College<br>2020-2023</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2>Skills</h2>
+            <button class="btn btn-custom mb-3" id="toggleSkills">Show/Hide Skills</button>
+            <ul class="skills-list" id="skillsList">
+                <li>Project Management</li>
+                <li>Customer Relationship Management</li>
+                <li>Teamwork</li>
+                <li>Time Management Leadership</li>
+                <li>Effective Communication</li>
+                <li>Strategic Planning</li>
+            </ul>
+        </div>
+
+        <!-- Languages -->
+        <div class="section">
+            <h2>Languages</h2>
+            <ul class="list-inline">
+                <li class="list-inline-item badge bg-primary text-white">English</li>
+                <li class="list-inline-item badge bg-primary text-white">Tamil</li>
+                <li class="list-inline-item badge bg-primary text-white">Hindi</li>
+            </ul>
+        </div>
+
+        <!-- Profile Summary -->
+        <div class="section">
+            <h2>Profile Summary</h2>
+            <p>Business Development Executive with a proven track record of identifying growth opportunities, building strategic partnerships, and driving revenue expansion. Adept at developing and executing sales strategies, negotiating high-value deals, and fostering long-term client relationships. Skilled in market research, competitive analysis, and lead generation to enhance business opportunities. Strong communicator and team player with a keen ability to adapt to dynamic market conditions and drive business success. Passionate about achieving organizational goals through innovation and strategic planning.</p>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="section">
+            <h2>Work Experience</h2>
+            <h5>Jindal Tubes - Business Development Executive</h5>
+            <p>2022-2024</p>
+            <ul>
+                <li>Built and maintained a strong network of distributors and dealers to drive sales growth and expand market presence.</li>
+                <li>Retained and nurtured long-term relationships with existing clients, ensuring continued business and customer satisfaction.</li>
+                <li>Introduced company products and services to potential clients, effectively pitching and persuading them to partner with the organization.</li>
+                <li>Designed and implemented sales strategies to boost revenue from both new and existing clients.</li>
+            </ul>
+        </div>
+
+        <!-- Certifications -->
+        <div class="section">
+            <h2>Certifications</h2>
+            <p><strong>Pursuing Full Stack</strong></p>
+            <ul>
+                <li>Frontend: HTML, CSS, JavaScript, Bootstrap, React</li>
+                <li>Database: MySQL</li>
+                <li>Backend: Java</li>
+            </ul>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <h2>Projects</h2>
+            <ul>
+                <li>A Project Report on Consumer Behaviour in Online Shopping</li>
+                <li>National Level E-Quiz on UGC NET/SET Paper</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        document.getElementById('toggleSkills').addEventListener('click', function() {
+            const skillsList = document.getElementById('skillsList');
+            skillsList.classList.toggle('active');
+            this.textContent = skillsList.classList.contains('active') ? 'Hide Skills' : 'Show Skills';
+        });
+    </script>
+</body>
+</html>
